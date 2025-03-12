@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package goat.v1;
+
+
+service GoatService {
+  rpc Goat(GoatRequest) returns (GoatResponse) {}
+}
+
+message GoatRequest {
+  string sentence = 1;
+}
+
+message GoatResponse {
+  string sentence = 1;
+}

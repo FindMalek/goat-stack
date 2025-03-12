@@ -1,0 +1,23 @@
+# buf.gen.yaml defines a local generation template.
+# For details, see https://buf.build/docs/configuration/v2/buf-gen-yaml
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: go_package_prefix
+      value: goat/proto
+plugins:
+  - local: protoc-gen-go
+    out: ../../apps/server/proto
+    opt: paths=source_relative
+  - local: protoc-gen-connect-go
+    out: ../../apps/server/proto
+    opt: paths=source_relative
+  - local: protoc-gen-es
+    out: ../../apps/web/src/gen/proto
+    opt: target=ts
+    include_imports: true
+  - local: protoc-gen-connect-query
+    out: ../../apps/web/src/gen/proto
+    opt: target=ts
+    include_imports: true

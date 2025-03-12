@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "check-types": "turbo check-types",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "3.5.0",
+    "prettier-plugin-tailwindcss": "0.6.11",
+    "turbo": "2.4.1"
+  },
+  "packageManager": "pnpm@10.6.0",
+  "engines": {
+    "node": ">=22"
+  }
+}
