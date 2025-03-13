@@ -1,4 +1,13 @@
-# GoaT Stack 🐐 (Go and Typescript)
+<p align="center">
+<img src="goat.png " alt="Goat Stack" />
+</p>
+
+
+# GoaT Stack (Go and Typescript)
+
+## What is the Goat Stack?
+
+It's a React SPA with a Golang backend. The frontend and the backend are fully wired with Protocol Buffer.
 
 
 ## Requirements
@@ -11,16 +20,18 @@
 
 ### Backend
 
-Golang server with Protocol Buffer API
+- [Chi](https://go-chi.io/#/)
+- [ConnectRPC](https://connectrpc.com/)
+
 
 ### Frontend
 
-- React
-- Vite
-- TanStack Query
-- ConnectRPC
-- TanStack Router
-- Tailwind CSS
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
+- [Tanstack Router](https://tanstack.com/router/latest)
+- [Tanstack Query](https://tanstack.com/query/latest)
+- [ConnectRPC](https://connectrpc.com/)
+- [Tailwind CSS](https://www.tailwindcss.com)
 
 ## How to get started 🚀
 
@@ -37,6 +48,7 @@ just dev
 
 ## Todo
 
-[] - Docker for Server
-[] - Docker for React app
-[] - Improve DX
+- [] Docker for Server
+- [] Docker for React app
+- [] Add Database SQLite + Litestream
+- [] Improve DX
