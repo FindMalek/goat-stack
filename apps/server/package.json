@@ -2,6 +2,6 @@
     "name": "@goat/server",
     "private": true,
     "scripts": {
-        "dev":"go run ./cmd/goat/main.go"
+        "dev":"air"
     }
 }

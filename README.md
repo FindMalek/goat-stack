@@ -1,5 +1,11 @@
-# Goat Stack 🐐
+# GoaT Stack 🐐 (Go and Typescript)
 
+
+## Requirements
+- [Just](https://just.systems)
+- [Golang](https://go.dev/)
+- [pnpm](https://pnpm.io)
+- [Node](https://nodejs.org/en)
 
 ## The Stack
 
@@ -18,11 +24,19 @@ Golang server with Protocol Buffer API
 
 ## How to get started 🚀
 
-
+1. Init the project
 ```bash
 just init
 ```
 
+2. Launch the dev
+
 ```bash
-pnpm dev
+just dev
 ```
+
+## Todo
+
+[] - Docker for Server
+[] - Docker for React app
+[] - Improve DX

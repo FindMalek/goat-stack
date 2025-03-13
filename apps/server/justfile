@@ -1,0 +1,7 @@
+build:
+    go build -o ./tmp/main ./cmd/goat/main.go
+
+update:
+    go mod tidy
+    go get -u all
+    go mod tidy
