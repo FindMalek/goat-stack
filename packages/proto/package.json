@@ -6,7 +6,7 @@
     },
     "devDependencies": {
       "@bufbuild/buf":"1.50.0",
-      "@bufbuild/protoc-gen-es": "2.2.3",
+      "@bufbuild/protoc-gen-es": "2.2.4",
       "@connectrpc/protoc-gen-connect-query": "2.0.1"
     }
   }

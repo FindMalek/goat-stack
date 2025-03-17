@@ -2,61 +2,125 @@
 // @generated from file goat/v1/goat.proto (package goat.v1, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file goat/v1/goat.proto.
  */
 export const file_goat_v1_goat: GenFile = /*@__PURE__*/
-  fileDesc("ChJnb2F0L3YxL2dvYXQucHJvdG8SB2dvYXQudjEiHwoLR29hdFJlcXVlc3QSEAoIc2VudGVuY2UYASABKAkiIAoMR29hdFJlc3BvbnNlEhAKCHNlbnRlbmNlGAEgASgJMkQKC0dvYXRTZXJ2aWNlEjUKBEdvYXQSFC5nb2F0LnYxLkdvYXRSZXF1ZXN0GhUuZ29hdC52MS5Hb2F0UmVzcG9uc2UiAEJwCgtjb20uZ29hdC52MUIJR29hdFByb3RvUAFaGWdvYXQvcHJvdG8vZ29hdC92MTtnb2F0djGiAgNHWFiqAgdHb2F0LlYxygIHR29hdFxWMeICE0dvYXRcVjFcR1BCTWV0YWRhdGHqAghHb2F0OjpWMWIGcHJvdG8z");
+  fileDesc("ChJnb2F0L3YxL2dvYXQucHJvdG8SB2dvYXQudjEiKgoLVm90ZVJlcXVlc3QSGwoEVm90ZRgBIAEoDjINLmdvYXQudjEuVm90ZSIRCg9HZXRWb3Rlc1JlcXVlc3QiKwoQR2V0Vm90ZXNSZXNwb25zZRILCgNZZXMYASABKAMSCgoCTm8YAiABKAMiHwoMVm90ZVJlc3BvbnNlEg8KB1N1Y2Nlc3MYASABKAgqFwoEVm90ZRIHCgNZRVMQABIGCgJOTxABMocBCgtHb2F0U2VydmljZRI1CgRWb3RlEhQuZ29hdC52MS5Wb3RlUmVxdWVzdBoVLmdvYXQudjEuVm90ZVJlc3BvbnNlIgASQQoIR2V0Vm90ZXMSGC5nb2F0LnYxLkdldFZvdGVzUmVxdWVzdBoZLmdvYXQudjEuR2V0Vm90ZXNSZXNwb25zZSIAQnAKC2NvbS5nb2F0LnYxQglHb2F0UHJvdG9QAVoZZ29hdC9wcm90by9nb2F0L3YxO2dvYXR2MaICA0dYWKoCB0dvYXQuVjHKAgdHb2F0XFYx4gITR29hdFxWMVxHUEJNZXRhZGF0YeoCCEdvYXQ6OlYxYgZwcm90bzM");
 
 /**
- * @generated from message goat.v1.GoatRequest
+ * @generated from message goat.v1.VoteRequest
  */
-export type GoatRequest = Message<"goat.v1.GoatRequest"> & {
+export type VoteRequest = Message<"goat.v1.VoteRequest"> & {
   /**
-   * @generated from field: string sentence = 1;
+   * @generated from field: goat.v1.Vote Vote = 1;
    */
-  sentence: string;
+  Vote: Vote;
 };
 
 /**
- * Describes the message goat.v1.GoatRequest.
- * Use `create(GoatRequestSchema)` to create a new message.
+ * Describes the message goat.v1.VoteRequest.
+ * Use `create(VoteRequestSchema)` to create a new message.
  */
-export const GoatRequestSchema: GenMessage<GoatRequest> = /*@__PURE__*/
+export const VoteRequestSchema: GenMessage<VoteRequest> = /*@__PURE__*/
   messageDesc(file_goat_v1_goat, 0);
 
 /**
- * @generated from message goat.v1.GoatResponse
+ * @generated from message goat.v1.GetVotesRequest
  */
-export type GoatResponse = Message<"goat.v1.GoatResponse"> & {
-  /**
-   * @generated from field: string sentence = 1;
-   */
-  sentence: string;
+export type GetVotesRequest = Message<"goat.v1.GetVotesRequest"> & {
 };
 
 /**
- * Describes the message goat.v1.GoatResponse.
- * Use `create(GoatResponseSchema)` to create a new message.
+ * Describes the message goat.v1.GetVotesRequest.
+ * Use `create(GetVotesRequestSchema)` to create a new message.
  */
-export const GoatResponseSchema: GenMessage<GoatResponse> = /*@__PURE__*/
+export const GetVotesRequestSchema: GenMessage<GetVotesRequest> = /*@__PURE__*/
   messageDesc(file_goat_v1_goat, 1);
+
+/**
+ * @generated from message goat.v1.GetVotesResponse
+ */
+export type GetVotesResponse = Message<"goat.v1.GetVotesResponse"> & {
+  /**
+   * @generated from field: int64 Yes = 1;
+   */
+  Yes: bigint;
+
+  /**
+   * @generated from field: int64 No = 2;
+   */
+  No: bigint;
+};
+
+/**
+ * Describes the message goat.v1.GetVotesResponse.
+ * Use `create(GetVotesResponseSchema)` to create a new message.
+ */
+export const GetVotesResponseSchema: GenMessage<GetVotesResponse> = /*@__PURE__*/
+  messageDesc(file_goat_v1_goat, 2);
+
+/**
+ * @generated from message goat.v1.VoteResponse
+ */
+export type VoteResponse = Message<"goat.v1.VoteResponse"> & {
+  /**
+   * @generated from field: bool Success = 1;
+   */
+  Success: boolean;
+};
+
+/**
+ * Describes the message goat.v1.VoteResponse.
+ * Use `create(VoteResponseSchema)` to create a new message.
+ */
+export const VoteResponseSchema: GenMessage<VoteResponse> = /*@__PURE__*/
+  messageDesc(file_goat_v1_goat, 3);
+
+/**
+ * @generated from enum goat.v1.Vote
+ */
+export enum Vote {
+  /**
+   * @generated from enum value: YES = 0;
+   */
+  YES = 0,
+
+  /**
+   * @generated from enum value: NO = 1;
+   */
+  NO = 1,
+}
+
+/**
+ * Describes the enum goat.v1.Vote.
+ */
+export const VoteSchema: GenEnum<Vote> = /*@__PURE__*/
+  enumDesc(file_goat_v1_goat, 0);
 
 /**
  * @generated from service goat.v1.GoatService
  */
 export const GoatService: GenService<{
   /**
-   * @generated from rpc goat.v1.GoatService.Goat
+   * @generated from rpc goat.v1.GoatService.Vote
    */
-  goat: {
+  vote: {
     methodKind: "unary";
-    input: typeof GoatRequestSchema;
-    output: typeof GoatResponseSchema;
+    input: typeof VoteRequestSchema;
+    output: typeof VoteResponseSchema;
+  },
+  /**
+   * @generated from rpc goat.v1.GoatService.GetVotes
+   */
+  getVotes: {
+    methodKind: "unary";
+    input: typeof GetVotesRequestSchema;
+    output: typeof GetVotesResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_goat_v1_goat, 0);

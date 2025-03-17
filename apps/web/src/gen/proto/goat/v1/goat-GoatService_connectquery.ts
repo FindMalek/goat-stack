@@ -5,6 +5,11 @@
 import { GoatService } from "./goat_pb";
 
 /**
- * @generated from rpc goat.v1.GoatService.Goat
+ * @generated from rpc goat.v1.GoatService.Vote
  */
-export const goat = GoatService.method.goat;
+export const vote = GoatService.method.vote;
+
+/**
+ * @generated from rpc goat.v1.GoatService.GetVotes
+ */
+export const getVotes = GoatService.method.getVotes;

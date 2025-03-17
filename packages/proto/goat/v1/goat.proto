@@ -4,13 +4,25 @@ package goat.v1;
 
 
 service GoatService {
-  rpc Goat(GoatRequest) returns (GoatResponse) {}
+  rpc Vote(VoteRequest) returns (VoteResponse) {}
+  rpc GetVotes(GetVotesRequest) returns (GetVotesResponse) {}
 }
 
-message GoatRequest {
-  string sentence = 1;
+enum Vote {
+  YES = 0;
+  NO = 1;
 }
 
-message GoatResponse {
-  string sentence = 1;
+message VoteRequest {
+    Vote Vote = 1;
+}
+
+message GetVotesRequest {}
+
+message GetVotesResponse {
+    int64 Yes = 1;
+    int64 No = 2;
+}
+message VoteResponse {
+  bool Success = 1;
 }

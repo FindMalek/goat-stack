@@ -33,13 +33,16 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// GoatServiceGoatProcedure is the fully-qualified name of the GoatService's Goat RPC.
-	GoatServiceGoatProcedure = "/goat.v1.GoatService/Goat"
+	// GoatServiceVoteProcedure is the fully-qualified name of the GoatService's Vote RPC.
+	GoatServiceVoteProcedure = "/goat.v1.GoatService/Vote"
+	// GoatServiceGetVotesProcedure is the fully-qualified name of the GoatService's GetVotes RPC.
+	GoatServiceGetVotesProcedure = "/goat.v1.GoatService/GetVotes"
 )
 
 // GoatServiceClient is a client for the goat.v1.GoatService service.
 type GoatServiceClient interface {
-	Goat(context.Context, *connect.Request[v1.GoatRequest]) (*connect.Response[v1.GoatResponse], error)
+	Vote(context.Context, *connect.Request[v1.VoteRequest]) (*connect.Response[v1.VoteResponse], error)
+	GetVotes(context.Context, *connect.Request[v1.GetVotesRequest]) (*connect.Response[v1.GetVotesResponse], error)
 }
 
 // NewGoatServiceClient constructs a client for the goat.v1.GoatService service. By default, it uses
@@ -53,10 +56,16 @@ func NewGoatServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	goatServiceMethods := v1.File_goat_v1_goat_proto.Services().ByName("GoatService").Methods()
 	return &goatServiceClient{
-		goat: connect.NewClient[v1.GoatRequest, v1.GoatResponse](
+		vote: connect.NewClient[v1.VoteRequest, v1.VoteResponse](
 			httpClient,
-			baseURL+GoatServiceGoatProcedure,
-			connect.WithSchema(goatServiceMethods.ByName("Goat")),
+			baseURL+GoatServiceVoteProcedure,
+			connect.WithSchema(goatServiceMethods.ByName("Vote")),
+			connect.WithClientOptions(opts...),
+		),
+		getVotes: connect.NewClient[v1.GetVotesRequest, v1.GetVotesResponse](
+			httpClient,
+			baseURL+GoatServiceGetVotesProcedure,
+			connect.WithSchema(goatServiceMethods.ByName("GetVotes")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -64,17 +73,24 @@ func NewGoatServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // goatServiceClient implements GoatServiceClient.
 type goatServiceClient struct {
-	goat *connect.Client[v1.GoatRequest, v1.GoatResponse]
+	vote     *connect.Client[v1.VoteRequest, v1.VoteResponse]
+	getVotes *connect.Client[v1.GetVotesRequest, v1.GetVotesResponse]
 }
 
-// Goat calls goat.v1.GoatService.Goat.
-func (c *goatServiceClient) Goat(ctx context.Context, req *connect.Request[v1.GoatRequest]) (*connect.Response[v1.GoatResponse], error) {
-	return c.goat.CallUnary(ctx, req)
+// Vote calls goat.v1.GoatService.Vote.
+func (c *goatServiceClient) Vote(ctx context.Context, req *connect.Request[v1.VoteRequest]) (*connect.Response[v1.VoteResponse], error) {
+	return c.vote.CallUnary(ctx, req)
+}
+
+// GetVotes calls goat.v1.GoatService.GetVotes.
+func (c *goatServiceClient) GetVotes(ctx context.Context, req *connect.Request[v1.GetVotesRequest]) (*connect.Response[v1.GetVotesResponse], error) {
+	return c.getVotes.CallUnary(ctx, req)
 }
 
 // GoatServiceHandler is an implementation of the goat.v1.GoatService service.
 type GoatServiceHandler interface {
-	Goat(context.Context, *connect.Request[v1.GoatRequest]) (*connect.Response[v1.GoatResponse], error)
+	Vote(context.Context, *connect.Request[v1.VoteRequest]) (*connect.Response[v1.VoteResponse], error)
+	GetVotes(context.Context, *connect.Request[v1.GetVotesRequest]) (*connect.Response[v1.GetVotesResponse], error)
 }
 
 // NewGoatServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -84,16 +100,24 @@ type GoatServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewGoatServiceHandler(svc GoatServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	goatServiceMethods := v1.File_goat_v1_goat_proto.Services().ByName("GoatService").Methods()
-	goatServiceGoatHandler := connect.NewUnaryHandler(
-		GoatServiceGoatProcedure,
-		svc.Goat,
-		connect.WithSchema(goatServiceMethods.ByName("Goat")),
+	goatServiceVoteHandler := connect.NewUnaryHandler(
+		GoatServiceVoteProcedure,
+		svc.Vote,
+		connect.WithSchema(goatServiceMethods.ByName("Vote")),
+		connect.WithHandlerOptions(opts...),
+	)
+	goatServiceGetVotesHandler := connect.NewUnaryHandler(
+		GoatServiceGetVotesProcedure,
+		svc.GetVotes,
+		connect.WithSchema(goatServiceMethods.ByName("GetVotes")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/goat.v1.GoatService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case GoatServiceGoatProcedure:
-			goatServiceGoatHandler.ServeHTTP(w, r)
+		case GoatServiceVoteProcedure:
+			goatServiceVoteHandler.ServeHTTP(w, r)
+		case GoatServiceGetVotesProcedure:
+			goatServiceGetVotesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -103,6 +127,10 @@ func NewGoatServiceHandler(svc GoatServiceHandler, opts ...connect.HandlerOption
 // UnimplementedGoatServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedGoatServiceHandler struct{}
 
-func (UnimplementedGoatServiceHandler) Goat(context.Context, *connect.Request[v1.GoatRequest]) (*connect.Response[v1.GoatResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("goat.v1.GoatService.Goat is not implemented"))
+func (UnimplementedGoatServiceHandler) Vote(context.Context, *connect.Request[v1.VoteRequest]) (*connect.Response[v1.VoteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("goat.v1.GoatService.Vote is not implemented"))
+}
+
+func (UnimplementedGoatServiceHandler) GetVotes(context.Context, *connect.Request[v1.GetVotesRequest]) (*connect.Response[v1.GetVotesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("goat.v1.GoatService.GetVotes is not implemented"))
 }
