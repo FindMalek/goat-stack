@@ -16,9 +16,9 @@ function App() {
       <div className="min-h-screen flex flex-col items-center justify-center text-[calc(10px+2vmin)]">
         <p className="text-3xl">Is this the 🐐 stack?</p>
 
-        <div className="mt-8 space-x-2">
+        <div className="my-8 space-x-2">
           <Button
-            variant={'outline'}
+            variant={"outline"}
             disabled={v.isPending}
             onClick={async () => {
               await v.mutateAsync({
@@ -30,7 +30,7 @@ function App() {
             Yes
           </Button>
           <Button
-            variant={'outline'}
+            variant={"outline"}
             disabled={v.isPending}
             onClick={async () => {
               await v.mutateAsync({
@@ -41,8 +41,35 @@ function App() {
           >
             No
           </Button>
+          <p className="text-sm">
+            {" "}
+            <Button asChild variant={"link"} size={"sm"}>
+              <Link to="/results">View results</Link>
+            </Button>
+          </p>
         </div>
-        <p className="text-sm"> <Button asChild variant={'link'} size={'sm'}><Link  to="/results">View results</Link></Button></p>
+
+        <div className="text-lg">
+          Because we just ship it at{" "}
+          <a
+            className="hover:underline"
+            href="https://www.openstatus.dev?ref=goatstack.dev"
+          >
+            OpenStatus
+          </a>
+          . Here's the goat-stack{" "}
+        </div>
+
+
+
+        <div>
+          <a
+            href="https://github.com/thibaultleouay/goat-stack"
+            className="text-sm hover:underline"
+          >
+           GitHub
+          </a>
+        </div>
       </div>
     </div>
   );

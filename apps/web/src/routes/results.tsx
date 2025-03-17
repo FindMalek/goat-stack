@@ -17,5 +17,7 @@ function RouteComponent() {
     return <div>Loading...</div>
   }
 
-  return <><div>Yes {data.data?.Yes}</div> <div>No {data.data?.No} </div></>
+  return <div className="grid h-screen place-items-center"><div>
+    <h1 className='text-4xl'>Is it the goat stack??</h1>
+    <div className='text-xl'>Yes: {data.data?.Yes}</div> <div className='text-xl'>No {data.data?.No} </div></div></div>
 }
