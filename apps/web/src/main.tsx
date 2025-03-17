@@ -11,8 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TransportProvider } from "@connectrpc/connect-query";
 
 const finalTransport = createConnectTransport({
-  baseUrl: "http://localhost:8080",
-
+  baseUrl: import.meta.env.VITE_API_SERVER_URL,
 });
 
 const queryClient = new QueryClient();

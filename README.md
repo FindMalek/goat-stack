@@ -22,6 +22,7 @@ It's a React SPA with a Golang backend. The frontend and the backend are fully w
 
 - [Chi](https://go-chi.io/#/)
 - [ConnectRPC](https://connectrpc.com/)
+- [SQLite](https://www.sqlite.org/)
 
 
 ### Frontend
@@ -48,7 +49,8 @@ just dev
 
 ## Todo
 
-- [] Docker for Server
-- [] Docker for React app
-- [] Add Database SQLite + Litestream
-- [] Improve DX
+- [X] Docker for Server
+- [ ] Docker for React app
+- [ ] Add Database SQLite
+- [X] Add LiteStream
+- [ ] Improve DX
