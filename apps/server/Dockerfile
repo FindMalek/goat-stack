@@ -9,7 +9,8 @@ ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
 
-COPY go.* .
+COPY go.mod .
+COPY go.sum .
 RUN go mod download
 
 COPY . .
