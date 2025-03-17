@@ -12,15 +12,17 @@
     "@bufbuild/protobuf": "2.2.4",
     "@connectrpc/connect-query": "2.0.1",
     "@connectrpc/connect-web": "2.0.2",
+    "@goat/ui": "workspace:*",
     "@tailwindcss/vite": "4.0.6",
     "@tanstack/react-query": "5.68.0",
     "@tanstack/react-router": "1.114.23",
     "@tanstack/react-router-devtools": "1.114.23",
     "@tanstack/router-plugin": "1.114.23",
-    "@goat/ui": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tailwindcss": "4.0.6"
+    "recharts": "2.15.1",
+    "tailwindcss": "4.0.6",
+    "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
     "@testing-library/dom": "10.4.0",

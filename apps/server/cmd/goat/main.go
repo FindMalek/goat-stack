@@ -33,6 +33,10 @@ func main() {
 		w.Write([]byte("This is our server"))
 	})
 
+	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Healty"))
+	})
+
 	walkFunc := func(method string, route string, handler http.Handler, middlewares ...func(http.Handler) http.Handler) error {
 		route = strings.Replace(route, "/*/", "/", -1)
 		fmt.Printf("%s %s\n", method, route)
