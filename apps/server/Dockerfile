@@ -16,16 +16,27 @@ RUN go mod download
 COPY . .
 RUN go build -trimpath -ldflags "-s -w" -o goat ./cmd/goat
 
-FROM scratch
 
-WORKDIR /opt/bin
+
+FROM alpine
+
+RUN apk add bash
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
-
 COPY --from=builder /go/src/app/goat /opt/bin/goat
+COPY --from=litestream/litestream:latest /usr/local/bin/litestream /usr/local/bin/litestream
+
+
+RUN mkdir -p /data
+# WORKDIR /opt/bin
+
+EXPOSE 8080
+COPY scripts/run.sh /scripts/run.sh
+COPY etc/litestream.yml /etc/litestream.yml
+
 
 ENV TZ=UTC
 ENV USER=1000
 
-CMD [ "/opt/bin/goat" ]
+ENTRYPOINT "/scripts/run.sh"

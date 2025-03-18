@@ -18,7 +18,7 @@ create table if not exists vote (
 
 func New() *sqlx.DB {
 
-	db, err := sqlx.Open("sqlite", "file:db.sqlite")
+	db, err := sqlx.Open("sqlite", "file:./data/db")
 
 	if err != nil {
 		log.Fatal().Err(err).Msg("failed to open database")

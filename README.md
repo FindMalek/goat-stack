@@ -9,7 +9,6 @@
 
 It's a React SPA with a Golang backend. The frontend and the backend are fully wired with Protocol Buffer.
 
-
 ## Requirements
 - [Just](https://just.systems)
 - [Golang](https://go.dev/)
@@ -51,6 +50,6 @@ just dev
 
 - [X] Docker for Server
 - [ ] Docker for React app
-- [ ] Add Database SQLite
-- [X] Add LiteStream
-- [ ] Improve DX
+- [X] Add Database SQLite
+- [ ] Add LiteStream
+- [ ] Improve DX with Just

@@ -1,0 +1,8 @@
+dbs:
+  - path: /data/db
+    replicas:
+      - type: s3
+        endpoint: https://${CLOUDFLARE_R2_ACCOUNT_ID}.r2.cloudflarestorage.com/
+        bucket: goat-stack
+        access-key-id: ${CLOUDFLARE_R2_ACCESS_KEY_ID}
+        secret-access-key: ${CLOUDFLARE_R2_SECRET_ACCESS_KEY}
