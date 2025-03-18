@@ -51,5 +51,5 @@ just dev
 - [X] Docker for Server
 - [ ] Docker for React app
 - [X] Add Database SQLite
-- [ ] Add LiteStream
+- [X] Add LiteStream
 - [ ] Improve DX with Just
