@@ -2,13 +2,11 @@ package main
 
 import (
 	"context"
-	"fmt"
 	goat_handler "goat/internal/goat"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
-	"strings"
 	"syscall"
 	"time"
 
@@ -37,17 +35,7 @@ func main() {
 		w.Write([]byte("Healty"))
 	})
 
-	walkFunc := func(method string, route string, handler http.Handler, middlewares ...func(http.Handler) http.Handler) error {
-		route = strings.Replace(route, "/*/", "/", -1)
-		fmt.Printf("%s %s\n", method, route)
-		return nil
-	}
-
 	goat_handler.RegisterConnect(r)
-
-	if err := chi.Walk(r, walkFunc); err != nil {
-		fmt.Printf("Logging err: %s\n", err.Error())
-	}
 
 	// Start our server
 	server := newServer(":"+"8080", r)
@@ -63,8 +51,8 @@ func main() {
 		<-sig
 
 		// Shutdown signal with grace period of 30 seconds
-		shutdownCtx, _ := context.WithTimeout(serverCtx, 30*time.Second)
-
+		shutdownCtx, cancel := context.WithTimeout(serverCtx, 30*time.Second)
+		defer cancel()
 		go func() {
 			<-shutdownCtx.Done()
 			if shutdownCtx.Err() == context.DeadlineExceeded {

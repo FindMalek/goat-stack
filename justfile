@@ -11,3 +11,7 @@ buf:
 
 dev:
     pnpm dev
+
+build:
+    just apps/server/build
+    pnpm build

@@ -49,7 +49,7 @@ just dev
 ## Todo
 
 - [X] Docker for Server
-- [ ] Docker for React app
+- [X] Docker for React app
 - [X] Add Database SQLite
 - [X] Add LiteStream
 - [ ] Improve DX with Just
